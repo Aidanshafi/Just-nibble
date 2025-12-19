@@ -1,0 +1,140 @@
+import tkinter as tk # imports the tkinter library for GUI applications
+import json# imports the json library for handling JSON data
+from tkinter import messagebox # imports the messagebox module from tkinter for displaying message boxes
+import os # imports the os library for interacting with the operating system
+import sys # imports the sys library for system-specific parameters and functions
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__)) # gets the directory of the current script
+MEALS_PATH = os.path.join(BASE_DIR, "meals.json") # constructs the full path to the meals.json file
+
+print("SCRIPT LOCATION:", BASE_DIR) # prints the script location
+print("LOOKING FOR meals.json AT:", MEALS_PATH) # prints the expected location of meals.json
+
+try: # attempts to open and load the meals.json file
+    with open(MEALS_PATH, "r", encoding="utf-8-sig") as f:
+        data = json.load(f)
+
+    print(f"Loaded {len(data)} meals")
+    print("First 10 meal keys:", list(data.keys())[:10])
+
+except FileNotFoundError: # handles the case where the meals.json file is not found
+    messagebox.showerror(
+        "File Not Found",
+        f"meals.json was NOT found.\n\nExpected location:\n{MEALS_PATH}"
+    )
+    sys.exit()
+
+except json.JSONDecodeError as e: # handles the case where the meals.json file is not valid JSON
+    messagebox.showerror(
+        "Invalid JSON",
+        f"meals.json is not valid JSON.\n\nLine {e.lineno}, Column {e.colno}\n{e.msg}"
+    )
+    sys.exit()
+ 
+root = tk.Tk() # creates the main application window
+root.title("Just Nibble") # sets the title of the application window
+
+diet_options = ["None", "Cutting", "Bulking", "Maintaining"] # defines the diet options for the dropdown menu
+
+root.columnconfigure(0, weight=1) # configures the first column of the grid to expand with the window
+root.rowconfigure(0, weight=1) # configures the first row of the grid to expand with the window
+
+# tk labels where help created with The CS Classroom from youtube https://www.youtube.com/watch?v=d_MrsYUJPGI&list=LL& 
+# I've use
+
+tk.Label(root, text="On a scale of 1–10 how hungry are you").grid(row=0, column=0, pady=5) # creates a label asking for hunger level
+hunger_scale = tk.Scale(root, from_=1, to=10, orient=tk.HORIZONTAL)# creates a horizontal scale for hunger level input
+hunger_scale.grid(row=1, column=0) # places the hunger scale on the 1st row
+
+tk.Label(root, text="Enter your caloric intake").grid(row=2, column=0, pady=5)# creates a label asking for caloric intake
+calories_entry = tk.Entry(root) # creates an entry widget for caloric intake input
+calories_entry.grid(row=3, column=0) # places the caloric intake entry on the 3rd row
+
+diet_value = tk.StringVar(root) # creates a StringVar to hold the selected diet option
+diet_value.set("None") # sets the default value of the diet option
+tk.OptionMenu(root, diet_value, *diet_options).grid(row=4, column=0) # creates and places the diet option menu on the 4th row
+
+tk.Label(root, text="How much are you willing to spend").grid(row=5, column=0, pady=5) # creates a label asking for price range
+price_entry = tk.Entry(root) # creates an entry widget for price range input
+price_entry.grid(row=6, column=0) # places the price range entry on the 6th row
+
+gluten_var = tk.IntVar() # creates an IntVar to hold the state of the gluten allergy checkbox
+tk.Checkbutton(root, text="Gluten Allergy", variable=gluten_var).grid(row=7, column=0) # creates and places the gluten allergy checkbox in the grid
+
+tk.Label(root, text="List any other allergies (comma separated)").grid(row=8, column=0, pady=5) # creates a label asking for other allergies
+allergies_entry = tk.Entry(root) # creates an entry widget for other allergies input
+allergies_entry.grid(row=9, column=0) # places the allergies entry on the 9th row
+
+vegan_var = tk.IntVar() # creates an IntVar to hold the state of the vegan checkbox
+tk.Checkbutton(root, text="Vegan", variable=vegan_var).grid(row=10, column=0) # creates and places the vegan checkbox in the grid
+
+def process_data(): # defines the function to process user input and find matching meals
+    try: 
+        target_calories = int(calories_entry.get())
+    except ValueError:
+        messagebox.showerror("Invalid Input", "Calories must be a number")
+        return
+
+    hunger_level = hunger_scale.get() # gets the hunger level from the scale
+    calorie_tolerance = 50 + (hunger_level * 25) # calculates calorie tolerance based on hunger level
+
+    selected_diet = diet_value.get().lower() # gets the selected diet option and converts it to lowercase
+    if selected_diet == "none":
+        selected_diet = None
+
+    try: # parse price limit
+        price_limit = float(price_entry.get())
+    except ValueError:
+        price_limit = float("inf")
+
+    allergies = [a.strip().lower() for a in allergies_entry.get().split(",") if a.strip()] # processes the allergies input into a list of lowercase strings
+
+    matches = [] # initializes an empty list to hold matching meals
+
+    for food in data.values(): # iterates over each meal in the data
+
+        if gluten_var.get() == 1 and food["glutenfree"].lower() != "yes": # checks if gluten allergy is selected and the food is not gluten-free
+            continue
+
+        if vegan_var.get() == 1 and food["vegan"].lower() != "yes": # checks if vegan is selected and the food is not vegan
+            continue
+
+        if selected_diet and food["diet"].lower() != selected_diet:  # checks if a diet is selected and the food doesn't match the diet
+            continue 
+        
+        ingredients_lower = [i.lower() for i in food["ingredients"]] # converts the ingredients list to lowercase for comparison
+        if any(a in ingredients_lower for a in allergies):
+            continue
+
+        if food["priceRange"] > price_limit: #  checks if the food's price range exceeds the user's limit
+            continue
+
+        if abs(food["calories"] - target_calories) > calorie_tolerance: # checks if the food's calories are outside the acceptable range
+            continue
+
+
+        matches.append(food) # adds the food to the matches list if all criteria are met
+
+    if not matches: # checks if there are no matching meals
+        messagebox.showinfo("No Results", "No foods match your criteria.")
+        return
+ 
+    best = min(matches, key=lambda x: abs(x["calories"] - target_calories)) # finds the meal with calories closest to the target
+
+    results = tk.Toplevel(root) # creates a new window to display the results
+    results.title("Results") # sets the title of the results window
+ 
+    box = tk.Listbox(results, width=50) # creates a listbox to display the meal details
+    box.pack(padx=10, pady=10, fill="both", expand=True) # places the listbox in the results window
+
+    box.insert(tk.END, f"Name: {best['name']}") # inserts the meal name into the listbox
+    box.insert(tk.END, f"Calories: {best['calories']}") # inserts the meal calories into the listbox
+    box.insert(tk.END, f"Price Range: {best['priceRange']}") # inserts the meal price range into the listbox
+    box.insert(tk.END, f"Diet: {best['diet']}") # inserts the meal diet into the listbox
+    box.insert(tk.END, f"Gluten Free: {best['glutenfree']}") # inserts the meal gluten-free status into the listbox
+    box.insert(tk.END, f"Vegan: {best['vegan']}")   # inserts the meal vegan status into the listbox
+    box.insert(tk.END, f"Ingredients: {', '.join(best['ingredients'])}") # inserts the meal ingredients into the listbox
+
+tk.Button(root, text="Submit", command=process_data).grid(row=11, column=0, pady=10) # creates and places the submit button in the grid
+
+root.mainloop() # starts the Tkinter event loop to run the application
