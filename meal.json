@@ -1,0 +1,274 @@
+{
+    "Taco Bowl": {
+        "name": "Taco Bowl",
+        "calories": 420,
+        "priceRange": 4.50,
+        "diet": "cutting",
+        "ingredients": ["chicken breast", "rice", "peppers", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Falafel Plate": {
+        "name": "Falafel Plate",
+        "calories": 380,
+        "priceRange": 3.80,
+        "diet": "cutting",
+        "ingredients": ["chickpeas", "lettuce", "tomato", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Greek Salad Bowl": {
+        "name": "Greek Salad Bowl",
+        "calories": 300,
+        "priceRange": 3.20,
+        "diet": "cutting",
+        "ingredients": ["lettuce", "cucumber", "tomato", "olive oil"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Chicken Stir Fry": {
+        "name": "Chicken Stir Fry",
+        "calories": 450,
+        "priceRange": 4.90,
+        "diet": "cutting",
+        "ingredients": ["chicken breast", "broccoli", "soy sauce"],
+        "glutenfree": "no",
+        "vegan": "no"
+    },
+    "Protein Smoothie": {
+        "name": "Protein Smoothie",
+        "calories": 280,
+        "priceRange": 2.50,
+        "diet": "cutting",
+        "ingredients": ["protein powder", "almond milk", "ice"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Lentil Soup": {
+        "name": "Lentil Soup",
+        "calories": 340,
+        "priceRange": 2.80,
+        "diet": "cutting",
+        "ingredients": ["lentils", "carrots", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Egg White Omelette": {
+        "name": "Egg White Omelette",
+        "calories": 250,
+        "priceRange": 2.10,
+        "diet": "cutting",
+        "ingredients": ["egg whites", "spinach", "mushrooms"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Tofu Veggie Bowl": {
+        "name": "Tofu Veggie Bowl",
+        "calories": 360,
+        "priceRange": 3.40,
+        "diet": "cutting",
+        "ingredients": ["tofu", "broccoli", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Grilled Fish Plate": {
+        "name": "Grilled Fish Plate",
+        "calories": 410,
+        "priceRange": 5.10,
+        "diet": "cutting",
+        "ingredients": ["cod", "lemon", "vegetables"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Chicken Lettuce Wraps": {
+        "name": "Chicken Lettuce Wraps",
+        "calories": 330,
+        "priceRange": 3.60,
+        "diet": "cutting",
+        "ingredients": ["chicken breast", "lettuce", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Chickpea Salad": {
+        "name": "Chickpea Salad",
+        "calories": 350,
+        "priceRange": 3.10,
+        "diet": "cutting",
+        "ingredients": ["chickpeas", "cucumber", "lemon"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Veggie Soup": {
+        "name": "Veggie Soup",
+        "calories": 290,
+        "priceRange": 2.40,
+        "diet": "cutting",
+        "ingredients": ["mixed vegetables", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+
+    "Chicken Biryani": {
+        "name": "Chicken Biryani",
+        "calories": 650,
+        "priceRange": 6.50,
+        "diet": "maintaining",
+        "ingredients": ["chicken breast", "basmati rice", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Pasta Bowl": {
+        "name": "Pasta Bowl",
+        "calories": 620,
+        "priceRange": 5.90,
+        "diet": "maintaining",
+        "ingredients": ["pasta", "tomato sauce", "herbs"],
+        "glutenfree": "no",
+        "vegan": "yes"
+    },
+    "Salmon Rice Bowl": {
+        "name": "Salmon Rice Bowl",
+        "calories": 680,
+        "priceRange": 7.20,
+        "diet": "maintaining",
+        "ingredients": ["salmon", "rice", "lemon"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Turkey Chili": {
+        "name": "Turkey Chili",
+        "calories": 700,
+        "priceRange": 6.80,
+        "diet": "maintaining",
+        "ingredients": ["lean turkey mince", "kidney beans", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Paneer Curry": {
+        "name": "Paneer Curry",
+        "calories": 640,
+        "priceRange": 5.50,
+        "diet": "maintaining",
+        "ingredients": ["paneer", "tomato sauce", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Veggie Burrito Bowl": {
+        "name": "Veggie Burrito Bowl",
+        "calories": 600,
+        "priceRange": 4.80,
+        "diet": "maintaining",
+        "ingredients": ["beans", "rice", "peppers"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Chicken Wrap Bowl": {
+        "name": "Chicken Wrap Bowl",
+        "calories": 630,
+        "priceRange": 5.40,
+        "diet": "maintaining",
+        "ingredients": ["chicken breast", "wrap", "vegetables"],
+        "glutenfree": "no",
+        "vegan": "no"
+    },
+    "Tofu Curry Bowl": {
+        "name": "Tofu Curry Bowl",
+        "calories": 590,
+        "priceRange": 4.60,
+        "diet": "maintaining",
+        "ingredients": ["tofu", "coconut milk", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Beef Rice Plate": {
+        "name": "Beef Rice Plate",
+        "calories": 720,
+        "priceRange": 7.10,
+        "diet": "maintaining",
+        "ingredients": ["beef mince", "rice", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Egg Fried Rice": {
+        "name": "Egg Fried Rice",
+        "calories": 610,
+        "priceRange": 4.30,
+        "diet": "maintaining",
+        "ingredients": ["eggs", "rice", "soy sauce"],
+        "glutenfree": "no",
+        "vegan": "no"
+    },
+    "Lentil Rice Bowl": {
+        "name": "Lentil Rice Bowl",
+        "calories": 580,
+        "priceRange": 4.00,
+        "diet": "maintaining",
+        "ingredients": ["lentils", "rice", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Chicken Pasta": {
+        "name": "Chicken Pasta",
+        "calories": 690,
+        "priceRange": 6.20,
+        "diet": "maintaining",
+        "ingredients": ["chicken breast", "pasta", "cream"],
+        "glutenfree": "no",
+        "vegan": "no"
+    },
+
+    "Beef Kofta Plate": {
+        "name": "Beef Kofta Plate",
+        "calories": 980,
+        "priceRange": 9.50,
+        "diet": "bulking",
+        "ingredients": ["beef mince", "rice", "spices"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Chicken Alfredo Bowl": {
+        "name": "Chicken Alfredo Bowl",
+        "calories": 1050,
+        "priceRange": 10.20,
+        "diet": "bulking",
+        "ingredients": ["chicken breast", "pasta", "cream"],
+        "glutenfree": "no",
+        "vegan": "no"
+    },
+    "Peanut Tofu Bowl": {
+        "name": "Peanut Tofu Bowl",
+        "calories": 900,
+        "priceRange": 6.90,
+        "diet": "bulking",
+        "ingredients": ["tofu", "rice", "peanut sauce"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    },
+    "Double Burger Bowl": {
+        "name": "Double Burger Bowl",
+        "calories": 1100,
+        "priceRange": 11.00,
+        "diet": "bulking",
+        "ingredients": ["beef mince", "potatoes", "cheese"],
+        "glutenfree": "yes",
+        "vegan": "no"
+    },
+    "Protein Oats": {
+        "name": "Protein Oats",
+        "calories": 850,
+        "priceRange": 4.20,
+        "diet": "bulking",
+        "ingredients": ["oats", "protein powder", "milk"],
+        "glutenfree": "no",
+        "vegan": "no"
+    },
+    "Rice and Lentil Bowl": {
+        "name": "Rice and Lentil Bowl",
+        "calories": 780,
+        "priceRange": 3.90,
+        "diet": "bulking",
+        "ingredients": ["lentils", "rice", "spices"],
+        "glutenfree": "yes",
+        "vegan": "yes"
+    }
+}
