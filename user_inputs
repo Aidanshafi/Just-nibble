@@ -40,7 +40,6 @@ root.columnconfigure(0, weight=1) # configures the first column of the grid to e
 root.rowconfigure(0, weight=1) # configures the first row of the grid to expand with the window
 
 # tk labels where help created with The CS Classroom from youtube https://www.youtube.com/watch?v=d_MrsYUJPGI&list=LL& 
-# I've use
 
 tk.Label(root, text="On a scale of 1–10 how hungry are you").grid(row=0, column=0, pady=5) # creates a label asking for hunger level
 hunger_scale = tk.Scale(root, from_=1, to=10, orient=tk.HORIZONTAL)# creates a horizontal scale for hunger level input
@@ -132,7 +131,7 @@ def process_data(): # defines the function to process user input and find matchi
     box.insert(tk.END, f"Price Range: {best['priceRange']}") # inserts the meal price range into the listbox
     box.insert(tk.END, f"Diet: {best['diet']}") # inserts the meal diet into the listbox
     box.insert(tk.END, f"Gluten Free: {best['glutenfree']}") # inserts the meal gluten-free status into the listbox
-    box.insert(tk.END, f"Vegan: {best['vegan']}")   # inserts the meal vegan status into the listbox
+    box.insert(tk.END, f"Vegan: {best['vegan']}") # inserts the meal vegan status into the listbox
     box.insert(tk.END, f"Ingredients: {', '.join(best['ingredients'])}") # inserts the meal ingredients into the listbox
 
 tk.Button(root, text="Submit", command=process_data).grid(row=11, column=0, pady=10) # creates and places the submit button in the grid
